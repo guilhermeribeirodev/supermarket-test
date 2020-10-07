@@ -9,8 +9,15 @@ public class Product {
 
     private final BigDecimal pricePerUnit;
 
+    private Discount discount;
+
     public Product(final BigDecimal pricePerUnit) {
         this.pricePerUnit = pricePerUnit;
+    }
+
+    public Product(BigDecimal pricePerUnit, Discount discount) {
+        this.pricePerUnit = pricePerUnit;
+        this.discount = discount;
     }
 
     BigDecimal pricePerUnit() {
@@ -26,5 +33,9 @@ public class Product {
         IntStream.rangeClosed(1, quantity).forEach(item -> list.add(new ItemByUnit(this)));
 
         return list;
+    }
+
+    public Discount getDiscount() {
+        return discount;
     }
 }

@@ -29,8 +29,7 @@ class BasketTest {
                 aSingleItemPricedPerUnit(),
                 multipleItemsPricedPerUnit(),
                 aSingleItemPricedByWeight(),
-                multipleItemsPricedByWeight(),
-                twoByOneDiscountOnPricedPerUnit()
+                multipleItemsPricedByWeight()
         );
     }
 
@@ -47,10 +46,6 @@ class BasketTest {
     private static Arguments multipleItemsPricedPerUnit() {
         return Arguments.of("multiple items priced per unit", "2.04",
                 Arrays.asList(aPackOfDigestives(), aPintOfMilk()));
-    }
-    private static Arguments twoByOneDiscountOnPricedPerUnit() {
-        return Arguments.of("two by one discount on priced per unit", "1.55",
-                Arrays.asList(aPackOfDigestives(), aPackOfDigestives()));
     }
 
     private static Arguments aSingleItemPricedPerUnit() {
