@@ -3,7 +3,6 @@ package kata.supermarket;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -16,8 +15,10 @@ class ProductTest {
     }
 
     @Test
-    void doubleItemsHasExpectedUnitPriceFromProduct() {
+    void multipleItemsHasExpectedUnitPriceFromProduct() {
         final BigDecimal price = new BigDecimal("2.49");
-        assertEquals(price.multiply(new BigDecimal("2")) , new Product(price).twoOf().stream().map(Item::price).reduce(BigDecimal::add).orElse(BigDecimal.ZERO));
+        final int itemsQuantity = 2;
+        assertEquals(price.multiply(new BigDecimal(itemsQuantity)) ,
+                new Product(price).multipleOf(itemsQuantity).stream().map(Item::price).reduce(BigDecimal::add).orElse(BigDecimal.ZERO));
     }
 }

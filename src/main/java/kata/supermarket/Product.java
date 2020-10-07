@@ -3,6 +3,7 @@ package kata.supermarket;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Product {
 
@@ -20,10 +21,10 @@ public class Product {
         return new ItemByUnit(this);
     }
 
-    public List<Item> twoOf() {
+    public List<Item> multipleOf(int quantity) {
         List<Item> list = new ArrayList<>();
-        list.add(new ItemByUnit(this));
-        list.add(new ItemByUnit(this));
+        IntStream.rangeClosed(1, quantity).forEach(item -> list.add(new ItemByUnit(this)));
+
         return list;
     }
 }
